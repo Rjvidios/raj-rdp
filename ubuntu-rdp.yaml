@@ -8,7 +8,7 @@ metadata:
     app: ubuntu-rdp
     tier: single
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ubuntu-rdp
