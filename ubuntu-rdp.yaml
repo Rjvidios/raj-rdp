@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ubuntu-rdp
+  namespace: app1
+  labels:
+    app: ubuntu-rdp
+    tier: single
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ubuntu-rdp
+  template:
+    metadata:
+      labels:
+        app: ubuntu-rdp
+        tier: single
+    spec:
+      containers:
+      - name: ubuntu-rdp
+        image: natereid/cc-xrdp:v.09
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ubuntu-rdp
+  namespace: app1
+  labels:
+    app: ubuntu-rdp
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 3389
+  selector:
+    app: ubuntu-rdp
