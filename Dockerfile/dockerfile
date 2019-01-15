@@ -1,0 +1,27 @@
+FROM ubuntu:xenial
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG en_US.utf8
+ENV TZ=America/New_York
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL LC_ALL=en_US.UTF-8en_US.UTF-8
+
+RUN     apt-get update && \
+        apt-get -y install \
+        locales \
+        software-properties-common \
+        supervisor \
+        ubuntu-desktop && \
+        echo xfce4-session > ~/.xsession && \
+        echo root:VMware1! | chpasswd
+
+RUN     apt-get -y install \
+        xrdp \
+        xfce4 && \
+        xrdp-keygen xrdp auto
+
+COPY etc/ etc/
+
+EXPOSE 3389
+
+CMD ["supervisord", "-n"]
