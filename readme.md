@@ -4,10 +4,10 @@ This is a very rough proof of conecept to connect to a container via RDP client 
 
 **Directions**
 ```
-kubectl create ns app1
+kubectl create ns ubrdp
 kubectl create -f ubuntu-rdp.yaml
 kubectl expose deployment ubuntu-rdp --name=ubuntu-rdp-lb --port=3389 --target-port=3389 --type=LoadBalancer --namespace=app1
-kubectl get services --all-namespaces
+kubectl get services --namespace ubrdp
 ```
 
 Connect from RDP client to exposed IP with username 'root' and password 'VMware1!'
