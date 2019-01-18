@@ -1,6 +1,6 @@
 ## Simple Ubuntu RDP Container
 
-This is a very rough proof of conecept to connect to a container via RDP client and have a desktop
+This is a very simple proof of conecept to connect to a container via RDP client and have a desktop. Use the dockerfile to apply packages that you would like on top of Ubuntu Desktop and XRDP.
 
 **Directions**
 ```
